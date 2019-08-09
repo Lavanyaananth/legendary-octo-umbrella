@@ -1,6 +1,3 @@
-console.log("hey test");
-
-
 /* getting lat and lat */
 navigator.geolocation.getCurrentPosition(function(position){
     console.log(position);
@@ -10,11 +7,21 @@ navigator.geolocation.getCurrentPosition(function(position){
     document.getElementById("lat").innerHTML = latitude;
     document.getElementById("lon").innerHTML = longitude;
    
-
-    /* Getting temperature from free code camp API */
-    fetch('https://fcc-weather-api.glitch.me/api/current?lat='+ latitude + '&lon=' +longitude)
-    .then(response => response.json())
-    .then(data => console.log((data)))
+    /* getting weather details from API */
+    const weatherreq = async () => {
+        const response = await fetch('https://fcc-weather-api.glitch.me/api/current?lat='+ latitude + '&lon=' +longitude);
+        const json = await response.json();
+        console.log(json);
+        var day_type = json.weather[0].description;
+        document.getElementById("day").innerHTML = day_type;
+        var loc = json.name;
+        document.getElementById("place").innerHTML = loc;
+        var temp = Math.round(json.main.temp);
+        document.getElementById("temperature").innerHTML = temp;
+      
+    }
+    weatherreq();
+    
 });
 
 
