@@ -33,8 +33,12 @@ body {
 #day{
     text-transform: capitalize;
 }
+#weather_icon {
+    width: 100px;
+    height: 100px;
+}
 footer{
     position : fixed;
-    bottom: 0px;
+    bottom: 10px;
  
 }

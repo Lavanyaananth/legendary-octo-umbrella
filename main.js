@@ -12,6 +12,7 @@ navigator.geolocation.getCurrentPosition(function(position){
         const response = await fetch('https://fcc-weather-api.glitch.me/api/current?lat='+ latitude + '&lon=' +longitude);
         const json = await response.json();
         console.log(json);
+        document.getElementById("weather_icon").src = json.weather[0].icon;
         var day_type = json.weather[0].description;
         document.getElementById("day").innerHTML = day_type;
         var loc = json.name;
@@ -21,6 +22,8 @@ navigator.geolocation.getCurrentPosition(function(position){
       
     }
     weatherreq();
+
+    /* toggle */
     
 });
 
