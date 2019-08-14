@@ -34,10 +34,11 @@ body {
     text-transform: capitalize;
 }
 #weather_icon {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background-image: url('images/weather.gif');
     background: transparent;
+    margin-top: 20px;
 }
 .toggleButton{
     width: 70px;
@@ -52,7 +53,12 @@ body {
     border-width: 2px;
     outline: none;
 }
-
+#temperaturef{
+    display: none;
+}
+#temperaturec{
+    display: block;
+}
 footer{
     position : fixed;
     bottom: 10px;

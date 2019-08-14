@@ -4,9 +4,7 @@ navigator.geolocation.getCurrentPosition(function(position){
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
     
-    document.getElementById("lat").innerHTML = latitude;
-    document.getElementById("lon").innerHTML = longitude;
-        var temp;
+        
     /* getting weather details from API */
     const weatherreq = async () => {
         const response = await fetch('https://fcc-weather-api.glitch.me/api/current?lat='+ latitude + '&lon=' +longitude);
@@ -23,13 +21,21 @@ navigator.geolocation.getCurrentPosition(function(position){
         var loc = json.name;
         document.getElementById("place").innerHTML = loc;
         var temp = Math.round(json.main.temp);
-        document.getElementById("temperature").innerHTML = temp + ' '+ '&#x2103'  ;
-
-        /* calculation */
-        document.getElementById('foo').onclick = function(){
-            var x = document.getElementsByClassName("fvalue");
-            x[0].innerHTML = Math.round(temp * 9/5 +32) +  ' '+ '&#x2109' ;
-
+        document.getElementById("temperaturec").innerHTML = temp + ' '+ '&#x2103'  ;
+        console.log("testing conversion");
+        document.getElementById("temperaturef").innerHTML = Math.round(temp * 9/5 +32) +  ' '+ '&#x2109'
+       
+        document.getElementById("foo").onclick = function(){
+            var x = document.getElementById("temperaturef");
+            var y = document.getElementById("temperaturec");
+            console.log(x);
+            if (window.getComputedStyle(x, null).getPropertyValue("display") === 'none') {
+                x.style.display = "block";
+                y.style.display = "none";
+            } else {
+                x.style.display = "none";
+                y.style.display = "block";
+            }
         }
               
     }
